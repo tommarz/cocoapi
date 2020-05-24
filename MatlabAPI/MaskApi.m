@@ -75,13 +75,15 @@ classdef MaskApi
   % Code written by Piotr Dollar and Tsung-Yi Lin, 2015.
   % Licensed under the Simplified BSD License [see coco/license.txt]
   
-  methods( Static )
+methods( Static )
     function Rs = encode( masks )
-      Rs = maskApiMex( 'encode', masks );
+        % mex('CFLAGS=\$CFLAGS -Wall -std=c99','-largeArrayDims','../dataset/COCO/cocoapi/MatlabAPI/private/maskApiMex.c','../dataset/COCO/cocoapi/common/maskApi.c','-I../dataset/COCO/cocoapi/common/','-outdir','../dataset/COCO/cocoapi/MatlabAPI/private');
+        Rs = maskApiMex( 'encode', masks );
     end
     
     function masks = decode( Rs )
-      masks = maskApiMex( 'decode', Rs );
+        % mex('CFLAGS=\$CFLAGS -Wall -std=c99','-largeArrayDims','../dataset/COCO/cocoapi/MatlabAPI/private/maskApiMex.c','../dataset/COCO/cocoapi/common/maskApi.c','-I../dataset/COCO/cocoapi/common/','-outdir','../dataset/COCO/cocoapi/MatlabAPI/private');
+        masks = maskApiMex( 'decode', Rs );
     end
     
     function R = merge( Rs, varargin )
